@@ -8,41 +8,40 @@ export default Route.extend({
     let blackDog = Song.create({
       title: 'Black Dog',
       band: 'Led Zeppelin',
-      rating: 3
+      rating: 3,
     });
     let yellowLedbetter = Song.create({
       title: 'Yellow Ledbetter',
       band: 'Pearl Jam',
-      rating: 4
+      rating: 4,
     });
     let pretender = Song.create({
       title: 'The Pretender',
       band: 'Foo Fighters',
-      rating: 2
+      rating: 2,
     });
     let daughter = Song.create({
       title: 'Daughter',
       band: 'Pearl Jam',
-      rating: 5
+      rating: 5,
     });
 
     let ledZeppelin = Band.create({
       name: 'Led Zeppelin',
       slug: 'led-zeppelin',
-      songs: A([blackDog])
+      songs: A([blackDog]),
     });
     let pearlJam = Band.create({
       name: 'Pearl Jam',
       slug: 'pearl-jam',
-      songs: A([yellowLedbetter, daughter])
+      songs: A([yellowLedbetter, daughter]),
     });
     let fooFighters = Band.create({
       name: 'Foo Fighters',
       slug: 'foo-fighters',
-      songs: A([pretender])
+      songs: A([pretender]),
     });
 
-
     return A([ledZeppelin, pearlJam, fooFighters]);
-  }
+  },
 });
