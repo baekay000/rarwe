@@ -1,5 +1,34 @@
-<ul class="list pl3">
-  {{#each this.model as |band|}}
-    <li>{{band.name}}</li>
-  {{/each}}
-</ul>
+<div class="rr-sidebar">
+  <ul class="rr-list">
+    {{#each this.model as |band|}}
+    <li class="rr-list-item">
+      <LinkTo @route="bands.band.songs" @model={{band.slug}} class="rr-band-link">
+        {{band.name}}
+        <span class="rr-pointer">
+          {{fa-icon "angle-right"}}
+        </span>
+      </LinkTo>
+    </li>
+    {{/each}}
+  </ul>
+  <div class="rr-new-label">
+    {{#if this.isAddingBand}}
+    <Input @type="text" @value={{this.newBandName}} class="rr-input" placeholder="New band" />
+    <button type="button" class="rr-action-button" {{on "click" this.saveBand}}>
+      Add
+    </button>
+    <button type="button" class="rr-cancel-icon" {{on "click" this.cancelAddBand}}>
+      {{fa-icon "times"}}
+    </button>
+    {{else}}
+    <button type="button" class="avenir bn bg-transparent near-white" data-test-rr="new-band-label" {{on "click" this.addBand}}>
+      {{fa-icon "plus"}}
+      Add new band
+    </button>
+    {{/if}}
+  </div>
+
+</div>
+<div class="rr-main-panel">
+  {{outlet}}
+</div>
