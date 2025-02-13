@@ -11,7 +11,6 @@
   --button-bg-color: var(--blue);
   --button-hover-color: var(--dark-blue);
   --button-disabled-color: var(--light-blue);
-
 }
 
 .rr-navbar {
@@ -20,7 +19,7 @@
   border: 1px solid transparent;
 }
 
-.rr-navbar>.rr-nav {
+.rr-navbar > .rr-nav {
   display: flex;
   margin: 0;
   padding: 0;
@@ -31,16 +30,16 @@
   padding: 5px;
 }
 
-.rr-navbar-item>a:hover {
+.rr-navbar-item > a:hover {
   border-bottom: 2px solid var(--navitem-link-color);
 }
 
-.rr-navbar-item>a.active {
+.rr-navbar-item > a.active {
   color: inherit;
   border-bottom: 2px solid var(--navitem-link-color);
 }
 
-.rr-navbar-item+.rr-navbar-item {
+.rr-navbar-item + .rr-navbar-item {
   margin-left: 10px;
 }
 
@@ -77,16 +76,26 @@ a {
   border-bottom: 1px solid;
 }
 
-.rr-page-header>.rr-app-title {
+.rr-header-link > .rr-app-title {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.rr-app-title>.rr-subtitle {
+.rr-panel {
+  padding: 1rem;
+  border: 0.125rem solid;
+  border-radius: 0.125rem;
+}
+.rr-textarea {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.rr-app-title > .rr-subtitle {
   font-weight: normal;
 }
 
-.list>li {
+.list > li {
   margin-bottom: 10px;
 }
 
@@ -110,12 +119,12 @@ a {
   margin-bottom: 10px;
 }
 
-.rr-band-link>.rr-pointer {
+.rr-band-link > .rr-pointer {
   margin-left: 5px;
   display: none;
 }
 
-.rr-band-link.active>.rr-pointer {
+.rr-band-link.active > .rr-pointer {
   display: inline-block;
 }
 
@@ -128,16 +137,16 @@ a {
   color: var(--input-color);
   border-style: solid;
   border-width: 1px;
-  padding: .25rem;
+  padding: 0.25rem;
 }
 
 .rr-action-button {
   color: var(--button-color);
   background-color: var(--button-bg-color);
-  border-radius: .125rem;
-  padding: .25rem;
-  padding-left: .5rem;
-  padding-right: .5rem;
+  border-radius: 0.125rem;
+  padding: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .rr-action-button:hover {
@@ -172,4 +181,4 @@ a {
   margin: 0;
   color: inherit;
   background-color: inherit;
-  }
+}
