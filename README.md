@@ -1,7 +1,6 @@
-# rarwe
+# Rock and Roll with Ember
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is an an Ember.js application following the 'Rock and Roll with Ember' book authored by Balint Erdi to learn v.3.14. 
 
 ## Prerequisites
 
