@@ -64,8 +64,6 @@ module('Acceptance | Bands', function (hooks) {
       .hasText('Crazy in Love', 'The new song is rendered');
   });
 
-
-
   test('Sort songs in various ways', async function (assert) {
     let band = this.server.create('band', { name: 'Them Crooked Vultures' });
     this.server.logging = true;
@@ -97,6 +95,22 @@ module('Acceptance | Bands', function (hooks) {
       .hasText(
         'New Fang',
         'The last song is the lowest ranked, last one in the alphabet'
+      );
+
+    await click('[data-test-rr=sort-by-title-desc]');
+
+    assert
+      .dom('[data-test-rr=song-list-item]:first-child')
+      .hasText(
+        'Spinning in Daffodils',
+        'The first song is the one that comes last in the alphabet'
+      );
+
+    assert
+      .dom('[data-test-rr=song-list-item]:last-child')
+      .hasText(
+        'Elephants',
+        'The last song is the one that comes first in the alphabet'
       );
   });
 });

@@ -1,12 +1,30 @@
 import Controller from '@ember/controller';
-import {action} from '@ember/object';
-import { empty } from '@ember/object/computed';
+import { action, computed } from '@ember/object';
+import { empty, sort } from '@ember/object/computed';
 
 export default Controller.extend({
   isAddingSong: false,
   newSongTitle: '',
 
   isAddButtonDisabled: empty('newSongTitle'),
+  sortBy: 'ratingDesc',
+
+  sortProperties: computed('sortBy', function () {
+    let options = {
+      ratingDesc: ['rating:desc', 'title:asc'],
+      ratingAsc: ['rating:asc', 'title:asc'],
+      titleDesc: ['title:desc'],
+      titleAsc: ['title:asc'],
+    };
+
+    return options[this.sortBy];
+  }),
+  
+  updateSortBy: action(function (sortBy) {
+    this.set('sortBy', sortBy);
+  }),
+
+  sortedSongs: sort('model.songs', 'sortProperties'),
 
   addSong: action(function () {
     this.set('isAddingSong', true);
@@ -20,15 +38,15 @@ export default Controller.extend({
     event.preventDefault();
     let newSong = this.store.createRecord('song', {
       title: this.get('newSongTitle'),
-      band: this.model
-    })
+      band: this.model,
+    });
     await newSong.save();
 
     this.set('newSongTitle', '');
   }),
 
-  updateRating: action(function(song, rating) {
+  updateRating: action(function (song, rating) {
     song.set('rating', song.rating === rating ? 0 : rating);
     song.save();
-  })
+  }),
 });
