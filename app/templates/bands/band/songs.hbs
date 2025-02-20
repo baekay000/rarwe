@@ -11,7 +11,7 @@
   {{else}}
     <li class="tc">
       No
-      {{this.model.name}}
+      {{this.model.title}}
       songs yet.
     </li>
   {{/each}}
@@ -21,7 +21,7 @@
       <form class="rr-inline-form" {{on "submit" this.saveSong}} data-test-rr="new-song-form">
         <Input
           @type="text"
-          @value={{this.newSongName}}
+          @value={{this.newSongTitle}}
           class="rr-input"
           placeholder="New song"
           data-test-rr="new-song-input"

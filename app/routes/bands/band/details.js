@@ -21,7 +21,6 @@ export default Route.extend({
         } else {
           controller.set('isEditing', false);
         }
-        // Reset the isEditing flag to false
       }
     });
   },

@@ -14,5 +14,4 @@ export default Controller.extend({
     this.set('isEditing', false);
   })
 
-
 });

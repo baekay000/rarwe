@@ -4,9 +4,9 @@ import { empty } from '@ember/object/computed';
 
 export default Controller.extend({
   isAddingSong: false,
-  newSongName: '',
+  newSongTitle: '',
 
-  isAddButtonDisabled: empty('newSongName'),
+  isAddButtonDisabled: empty('newSongTitle'),
 
   addSong: action(function () {
     this.set('isAddingSong', true);
@@ -24,7 +24,7 @@ export default Controller.extend({
     })
     await newSong.save();
 
-    this.set('newSongName', '');
+    this.set('newSongTitle', '');
   }),
 
   updateRating: action(function(song, rating) {
