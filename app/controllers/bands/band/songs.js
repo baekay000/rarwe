@@ -5,6 +5,14 @@ import { empty, sort } from '@ember/object/computed';
 export default Controller.extend({
   isAddingSong: false,
   newSongTitle: '',
+  searchTerm: '',
+
+  matchingSongs: computed('model.songs.@each.title', 'searchTerm', function() {
+    let searchTerm = this.searchTerm.toLowerCase();
+    return this.model.get('songs').filter((song) => {
+      return song.title.toLowerCase().includes(searchTerm);
+    })
+  }),
 
   isAddButtonDisabled: empty('newSongTitle'),
   sortBy: 'ratingDesc',
@@ -19,12 +27,12 @@ export default Controller.extend({
 
     return options[this.sortBy];
   }),
-  
+
   updateSortBy: action(function (sortBy) {
     this.set('sortBy', sortBy);
   }),
 
-  sortedSongs: sort('model.songs', 'sortProperties'),
+  sortedSongs: sort('matchingSongs', 'sortProperties'),
 
   addSong: action(function () {
     this.set('isAddingSong', true);
