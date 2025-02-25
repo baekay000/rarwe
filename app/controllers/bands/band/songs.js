@@ -15,7 +15,7 @@ export default Controller.extend({
     let searchTerm = this.searchTerm.toLowerCase();
     return this.model.get('songs').filter((song) => {
       return song.title.toLowerCase().includes(searchTerm);
-    })
+    });
   }),
 
   isAddButtonDisabled: empty('newSongTitle'),
@@ -30,10 +30,6 @@ export default Controller.extend({
     };
 
     return options[this.sortBy];
-  }),
-
-  updateSortBy: action(function (sortBy) {
-    this.set('sortBy', sortBy);
   }),
 
   sortedSongs: sort('matchingSongs', 'sortProperties'),
