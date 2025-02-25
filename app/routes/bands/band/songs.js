@@ -2,7 +2,6 @@ import Route from '@ember/routing/route';
 // import wait from '../../../utils/wait';
 
 export default Route.extend({
-
   /* Use the following to simulate network latency
 
   async model() {
