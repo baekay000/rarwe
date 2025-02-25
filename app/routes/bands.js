@@ -1,13 +1,18 @@
 import Route from '@ember/routing/route';
+// import wait from 'rarwe/utils/wait';
 
 export default Route.extend({
+
+  /* Simulate network latency
+
+     async model() {
+     await wait(3000);
+     return this.store.findAll('band');
+   },
+  */
+
   model() {
     return this.store.findAll('band');
   },
 
-  // redirect(bands) {
-  //   if (bands.length === 1) {
-  //   this.router.transitionTo('bands.band', bands.firstObject);
-  //   }
-  //   },
 });
