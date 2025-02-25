@@ -6,6 +6,10 @@ export default Controller.extend({
   isAddingSong: false,
   newSongTitle: '',
   searchTerm: '',
+  queryParams: {
+    sortBy: 's',
+    searchTerm: 'q',
+  },
 
   matchingSongs: computed('model.songs.@each.title', 'searchTerm', function() {
     let searchTerm = this.searchTerm.toLowerCase();

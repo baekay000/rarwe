@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
-import { visit, click, fillIn } from '@ember/test-helpers';
+import { visit, click, fillIn, currentURL } from '@ember/test-helpers';
 import { createBand, createSong } from 'rarwe/tests/helpers/custom-helpers';
 
 module('Acceptance | Bands', function (hooks) {
@@ -98,6 +98,7 @@ module('Acceptance | Bands', function (hooks) {
       );
 
     await click('[data-test-rr=sort-by-title-desc]');
+    assert.equal(currentURL(), '/bands/1/songs?s=titleDesc');
 
     assert
       .dom('[data-test-rr=song-list-item]:first-child')
@@ -129,6 +130,8 @@ module('Acceptance | Bands', function (hooks) {
         'The last song is the highest ranked, last one in the alphabet'
       );
 
+    assert.equal(currentURL(), '/bands/1/songs?s=ratingAsc');
+
     await click('[data-test-rr=sort-by-title-asc]');
     assert
       .dom('[data-test-rr=song-list-item]:first-child')
@@ -143,6 +146,8 @@ module('Acceptance | Bands', function (hooks) {
         'Spinning in Daffodils',
         'The last song is the one that comes last in the alphabet'
       );
+
+    assert.equal(currentURL(), '/bands/1/songs?s=titleAsc');
   });
 
   test('Search songs', async function (assert) {
@@ -168,6 +173,7 @@ module('Acceptance | Bands', function (hooks) {
     await visit('/');
     await click('[data-test-rr=band-link]');
     await fillIn('[data-test-rr=search-box]', 'no');
+    assert.equal(currentURL(), '/bands/1/songs?q=no');
 
     assert
       .dom('[data-test-rr=song-list-item]')
@@ -187,5 +193,8 @@ module('Acceptance | Bands', function (hooks) {
         'Mind Eraser, No Chaser',
         'A matching song that comes sooner in the alphabet appears at the bottom'
       );
+
+    assert.ok(currentURL().includes('q=no'));
+    assert.ok(currentURL().includes('s=titleDesc'));
   });
 });
