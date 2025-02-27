@@ -1,6 +1,7 @@
 # Rock and Roll with Ember
 
 This is an an Ember.js application following the 'Rock and Roll with Ember' book authored by Balint Erdi to learn v.3.14. 
+This project stops right before the 'Authentication' chapter.
 
 ## Prerequisites
 
