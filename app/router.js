@@ -1,6 +1,7 @@
 import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
 import { capitalize } from '@ember/string';
+import { capitalize as capitalizeWords } from 'rarwe/utils/capitalize';
 
 const Router = EmberRouter.extend({
   location: config.locationType,
@@ -28,9 +29,9 @@ const Router = EmberRouter.extend({
           let bandId = bandRouteInfo.params.id;
           let bandName = bandId
             .split('-')
-            .map((s) => capitalize(s))
+            .map(s => capitalize(s))
             .join(' ');
-          return `${bandName} songs`;
+          return `${capitalizeWords(bandName)} songs`;
         },
       };
       let titleSegments = [];
